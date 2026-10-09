@@ -7,6 +7,26 @@
    evidence.
 3. `make report`, then tag: `git tag -a vX.Y.Z -m "..."`.
 
+## Deploy (Cloud Run demo)
+
+```
+gcloud run deploy municerca-mcp --source . --region southamerica-west1 \
+  --allow-unauthenticated --max-instances 1 \
+  --set-env-vars MUNICERCA_AUTH_TOKEN="$(python3 -c 'import secrets;print(secrets.token_urlsafe(32))')"
+MUNICERCA_AUTH_TOKEN=... uv run python scripts/smoke_http.py https://<service-url>/mcp
+```
+
+- `--allow-unauthenticated` only opens the network path. The app itself rejects every request
+  without the bearer token (`tests/test_http.py`).
+- The token lives in the service's environment, not in this repo. Read it with
+  `gcloud run services describe municerca-mcp --region southamerica-west1`. Rotate it by
+  redeploying with a new value. Moving it to Secret Manager is the next step.
+- SQLite is on the instance's temporary disk and `--max-instances 1` keeps one writer. Tickets
+  are lost when the instance is recycled. This is a demo deployment, not a system of record.
+- Roll back a bad deploy with
+  `gcloud run services update-traffic municerca-mcp --to-revisions <previous>=100`, then
+  revert in git as below.
+
 ## Rollback (revert and retag)
 
 Never rewrite history on `main` and never move an existing tag.

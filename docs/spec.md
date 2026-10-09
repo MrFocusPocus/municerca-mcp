@@ -1,6 +1,7 @@
 # Spec: municerca-mcp
 
-Derived from [intent.md](intent.md). Transport: MCP over stdio. All tool inputs and outputs
+Derived from [intent.md](intent.md). Transport: MCP over stdio by default, streamable HTTP for
+hosted use (see Transports). All tool inputs and outputs
 are pydantic models. Errors are returned as MCP tool errors with a stable `code` and a message
 that never echoes user supplied text.
 
@@ -56,6 +57,15 @@ that never echoes user supplied text.
 - `municerca://kb/tramites`: the full knowledge base as JSON.
 - `municerca://kb/tramites/{tramite_id}`: one trámite.
 
+## Transports
+
+- stdio (default): `municerca-mcp`. Used by the harness, the evals and the tests.
+- Streamable HTTP: `MUNICERCA_TRANSPORT=http`, endpoint `/mcp`, port from `PORT`. Stateless.
+  Every request needs `Authorization: Bearer <MUNICERCA_AUTH_TOKEN>`. The server refuses to
+  start over HTTP without a token of at least 32 characters. `/healthz` is the only public path.
+- The token is one shared secret, read from the environment. There are no per client
+  identities, so the audit `actor` is always `agent`.
+
 ## Storage
 
 SQLite, path from `MUNICERCA_DB` (default `./municerca.db`). Tables: `tickets`, `review_queue`,
@@ -101,5 +111,7 @@ tickets before they are written.
 - No voice channel (the ElevenLabs and Twilio layer of the original product is not rebuilt).
 - No semantic or vector search.
 - No contact vault: contact is stored masked only, so a real callback is not possible.
-- No HTTP transport, no deployment, no multi tenant support.
+- No per client identity or OAuth on the HTTP transport, no multi tenant support.
+- No durable storage when hosted: the Cloud Run demo keeps SQLite on the instance's temporary
+  disk, so tickets disappear when the instance is recycled.
 - Redaction does not claim to catch names or every free text address.

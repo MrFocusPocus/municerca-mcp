@@ -33,6 +33,8 @@ and `docs/plan.md` before changing behavior.
 - Writing `ANTHROPIC_API_KEY` or any key to a file. Keys come from the environment only.
 - Reporting numbers that no run produced. Every metric comes from a file in `evals/results/`.
 - Using `mcp` 2.x APIs. This repo pins `mcp<2` and uses `mcp.server.fastmcp.FastMCP`.
+- Adding an unauthenticated HTTP path. Only `/healthz` is public. Everything else needs the
+  bearer token.
 - Using a real municipality name. The only municipality is "Municipalidad de Ejemplo".
 
 ## Verification

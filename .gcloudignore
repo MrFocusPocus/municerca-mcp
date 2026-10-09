@@ -1,0 +1,13 @@
+.venv/
+.git/
+traces/
+evals/
+tests/
+agent/
+scripts/
+docs/
+*.db
+report.html
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/

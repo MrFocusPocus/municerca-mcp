@@ -99,7 +99,13 @@ def kb_tramite_resource(tramite_id: str) -> str:
 
 
 def main() -> None:
-    mcp.run()
+    """stdio by default. MUNICERCA_TRANSPORT=http serves streamable HTTP with a bearer token."""
+    if os.environ.get("MUNICERCA_TRANSPORT", "stdio") == "http":
+        from municerca_mcp.http_app import serve
+
+        serve()
+    else:
+        mcp.run()
 
 
 if __name__ == "__main__":

@@ -11,6 +11,7 @@ harness that writes cost and latency traces, and an eval suite that gates change
 uv sync
 make check                                   # ruff, mypy --strict, pytest
 uv run municerca-mcp                         # MCP server over stdio
+MUNICERCA_TRANSPORT=http MUNICERCA_AUTH_TOKEN=... uv run municerca-mcp   # HTTP, bearer token
 export ANTHROPIC_API_KEY=...                 # environment only
 uv run python -m agent.run "¿Qué necesito para el permiso de circulación?"
 make evals                                   # prints pass rate per category and cost
