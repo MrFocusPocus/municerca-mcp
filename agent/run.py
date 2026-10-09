@@ -51,6 +51,7 @@ class Trace:
     latency_ms: int = 0
     input_tokens: int = 0
     output_tokens: int = 0
+    cache_read_tokens: int = 0
     cost_usd: float | None = None
     final_answer: str = ""
     stopped_reason: str = ""
@@ -99,6 +100,8 @@ async def _agent_loop(
         )
         trace.input_tokens += response.usage.input_tokens
         trace.output_tokens += response.usage.output_tokens
+        # input_tokens excludes cache reads, so they are tracked separately.
+        trace.cache_read_tokens += response.usage.cache_read_input_tokens or 0
         trace.stopped_reason = response.stop_reason or ""
         trace.final_answer = "".join(b.text for b in response.content if b.type == "text")
         tool_uses = [b for b in response.content if b.type == "tool_use"]

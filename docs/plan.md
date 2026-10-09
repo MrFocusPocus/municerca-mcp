@@ -11,8 +11,7 @@ src/municerca_mcp/
   models.py        pydantic models for all tool I/O
   kb.py            load and search the knowledge base
   data/tramites.json   12 trámites, Municipalidad de Ejemplo, some without horario
-  db.py            SQLite schema, tickets, review queue, append-only audit log
-  sla.py           business day SLA per category
+  db.py            SQLite schema, tickets, review queue, append-only audit log, SLA days
   redaction.py     RUT, phone, email redaction (added in the fix step, see below)
   server.py        FastMCP server: 5 tools + KB resource
 agent/

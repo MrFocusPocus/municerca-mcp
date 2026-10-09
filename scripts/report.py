@@ -173,7 +173,8 @@ evals/results/{esc(candidate)}.json. Every number below was produced by a real r
 the groundedness judge passes. The judge never runs on a case that already failed.</li>
 <li>Latency is wall clock per conversation including MCP server startup, measured with
 concurrent cases, so it overstates single conversation latency.</li>
-<li>Cost uses list prices for uncached input tokens, so it is an upper bound.</li>
+<li>Cost uses peak list prices. Input tokens are the uncached input reported by the
+provider. Cache reads are not counted in these two runs.</li>
 <li>Each run is a single sample. LLM runs vary, so small differences are not significant.</li>
 </ul></body></html>
 """

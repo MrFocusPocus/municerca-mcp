@@ -33,7 +33,8 @@ that never echoes user supplied text.
 - `sla_date`: creation date plus N business days (Monday to Friday) per category. N is demo
   policy in config.
 - Writes an audit entry (`actor=agent`, `action=ticket.created`).
-- Error `INVALID_CATEGORY`, `INVALID_DESCRIPTION`.
+- Invalid category or description length is rejected by schema validation before the tool
+  body runs.
 
 ### get_ticket_status(ticket_id: str) -> TicketStatus
 
