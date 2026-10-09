@@ -26,9 +26,9 @@ from `agent/pricing.py`. For a model that is not in that table, set `MUNICERCA_P
 
 ## Hosted demo
 
-A demo instance runs on Cloud Run at
-`https://municerca-mcp-970159477648.southamerica-west1.run.app/mcp` (streamable HTTP, bearer
-token required, `/health` is public). Storage there is temporary. See
+A demo instance is reachable at `https://municerca.cl/mcp` (streamable HTTP, bearer token
+required). A Firebase Hosting rewrite forwards that path to a Cloud Run service at
+`https://municerca-mcp-970159477648.southamerica-west1.run.app`, where `/health` is public. Storage there is temporary. See
 [docs/RUNBOOK.md](docs/RUNBOOK.md).
 
 ## Docs
