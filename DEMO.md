@@ -77,8 +77,8 @@ environment variables only.
 
 7. **What is still wrong with it?**
    One case fails in v1. Each result is a single run, so there is no variance estimate. The
-   runs used DeepSeek, not Claude. The CI workflows have never executed because there is no
-   remote. There is no contact vault, so a ticket cannot be called back.
+   runs used DeepSeek, not Claude. The `ci` workflow is green on GitHub, but the `evals` workflow has not run
+   yet because the repository has no API key secret. There is no contact vault, so a ticket cannot be called back.
 
 8. **How would this roll out to a team?**
    The reusable parts are not the municipal logic: `CLAUDE.md` with a verification block, the

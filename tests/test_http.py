@@ -1,4 +1,4 @@
-"""HTTP transport: nothing but /healthz is reachable without the bearer token."""
+"""HTTP transport: nothing but /health is reachable without the bearer token."""
 
 from __future__ import annotations
 
@@ -24,8 +24,8 @@ def test_wrong_token_is_rejected() -> None:
     assert response.json() == {"error": "UNAUTHORIZED"}
 
 
-def test_healthz_is_public_and_leaks_nothing() -> None:
-    response = TestClient(build_app(TOKEN)).get("/healthz")
+def test_health_is_public_and_leaks_nothing() -> None:
+    response = TestClient(build_app(TOKEN)).get("/health")
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
 

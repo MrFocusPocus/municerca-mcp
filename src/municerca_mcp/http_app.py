@@ -1,6 +1,6 @@
 """HTTP transport (MCP streamable HTTP) for hosted deployments.
 
-Every request except /healthz needs `Authorization: Bearer <MUNICERCA_AUTH_TOKEN>`. The
+Every request except /health needs `Authorization: Bearer <MUNICERCA_AUTH_TOKEN>`. The
 server refuses to start over HTTP without a token: there is no unauthenticated mode.
 """
 
@@ -18,11 +18,12 @@ from starlette.types import ASGIApp, Receive, Scope, Send
 from municerca_mcp.server import mcp
 
 MIN_TOKEN_LENGTH = 32
-HEALTH_PATH = "/healthz"
+# Not /healthz: Cloud Run reserves that path and answers it before the container.
+HEALTH_PATH = "/health"
 
 
 @mcp.custom_route(HEALTH_PATH, methods=["GET"])  # type: ignore[untyped-decorator]
-async def healthz(_: Request) -> Response:
+async def health(_: Request) -> Response:
     return JSONResponse({"status": "ok"})
 
 

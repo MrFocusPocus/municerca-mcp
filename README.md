@@ -24,6 +24,13 @@ Models default to `claude-haiku-5-5` (agent) and `claude-sonnet-5-5` (judge). Ov
 from `agent/pricing.py`. For a model that is not in that table, set `MUNICERCA_PRICE_IN` and
 `MUNICERCA_PRICE_OUT` (USD per million tokens) or the cost is reported as unknown.
 
+## Hosted demo
+
+A demo instance runs on Cloud Run at
+`https://municerca-mcp-970159477648.southamerica-west1.run.app/mcp` (streamable HTTP, bearer
+token required, `/health` is public). Storage there is temporary. See
+[docs/RUNBOOK.md](docs/RUNBOOK.md).
+
 ## Docs
 
 - [docs/intent.md](docs/intent.md): problem, outcome, users, constraints

@@ -62,7 +62,7 @@ that never echoes user supplied text.
 - stdio (default): `municerca-mcp`. Used by the harness, the evals and the tests.
 - Streamable HTTP: `MUNICERCA_TRANSPORT=http`, endpoint `/mcp`, port from `PORT`. Stateless.
   Every request needs `Authorization: Bearer <MUNICERCA_AUTH_TOKEN>`. The server refuses to
-  start over HTTP without a token of at least 32 characters. `/healthz` is the only public path.
+  start over HTTP without a token of at least 32 characters. `/health` is the only public path.
 - The token is one shared secret, read from the environment. There are no per client
   identities, so the audit `actor` is always `agent`.
 
