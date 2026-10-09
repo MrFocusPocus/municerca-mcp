@@ -23,6 +23,7 @@ from mcp.types import TextContent
 
 from agent.pricing import cost_usd
 from agent.prompts import DEFAULT_PROMPT, PROMPTS
+from municerca_mcp.redaction import redact_text
 
 MAX_TURNS = 6
 MAX_TOKENS = 1024
@@ -57,8 +58,12 @@ class Trace:
 
 
 def serialize_trace(trace: Trace) -> str:
-    """The exact line that is written to disk."""
-    return json.dumps(asdict(trace), ensure_ascii=False)
+    """The exact line that is written to disk, redacted as a whole (Ley 19.628).
+
+    Redacting the serialized line covers every field at once: the resident's message,
+    tool arguments, tool results and the final answer.
+    """
+    return redact_text(json.dumps(asdict(trace), ensure_ascii=False))
 
 
 def write_trace(trace: Trace, path: Path) -> None:

@@ -6,6 +6,8 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+from municerca_mcp.redaction import RedactionCounts
+
 Category = Literal["reclamo", "solicitud", "sugerencia", "consulta", "felicitacion"]
 TicketState = Literal["abierto", "escalado"]
 
@@ -38,6 +40,9 @@ class TicketCreated(BaseModel):
     ticket_id: str
     status: TicketState
     sla_date: str
+    redactions: RedactionCounts = Field(
+        default_factory=RedactionCounts, description="Counts only, never the redacted values"
+    )
 
 
 class TicketStatus(BaseModel):

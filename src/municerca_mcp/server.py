@@ -20,6 +20,7 @@ from municerca_mcp.models import (
     TicketStatus,
     Tramite,
 )
+from municerca_mcp.redaction import redact, redact_text
 
 mcp = FastMCP("municerca")
 
@@ -60,8 +61,14 @@ def create_oirs_ticket(
     description: Annotated[str, Field(min_length=10, max_length=2000)],
     contact: Annotated[str, Field(max_length=200)],
 ) -> TicketCreated:
-    """Crea una solicitud OIRS. Devuelve el número de ticket y la fecha de respuesta (SLA)."""
-    return store().create_ticket(category, description, contact)
+    """Crea una solicitud OIRS. Devuelve el número de ticket y la fecha de respuesta (SLA).
+
+    RUT, teléfonos y correos se censuran antes de guardar (Ley 19.628).
+    """
+    safe_description, description_counts = redact(description)
+    safe_contact, contact_counts = redact(contact)
+    created = store().create_ticket(category, safe_description, safe_contact)
+    return created.model_copy(update={"redactions": description_counts + contact_counts})
 
 
 @mcp.tool()
@@ -76,7 +83,7 @@ def escalate_to_human(
     reason: Annotated[str, Field(min_length=3, max_length=500)],
 ) -> Escalation:
     """Deriva un ticket existente a un funcionario. Queda en la cola de revisión y en auditoría."""
-    return store().escalate(ticket_id, reason)
+    return store().escalate(ticket_id, redact_text(reason))
 
 
 @mcp.resource("municerca://kb/tramites")
