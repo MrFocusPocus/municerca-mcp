@@ -1,0 +1,661 @@
+{
+  "meta": {
+    "label": "v1",
+    "git_sha": "ffadbd0",
+    "started_at": "2026-10-09T16:17:12+00:00",
+    "agent_model": "deepseek-flash",
+    "judge_model": "deepseek-v4-pro",
+    "provider_host": "api.deepseek.com",
+    "prompt_version": "v1",
+    "threshold": 0.9,
+    "dataset": "/Users/computer/Documents/municerca/municerca-mcp/evals/dataset.jsonl"
+  },
+  "summary": {
+    "total": 24,
+    "passed": 23,
+    "pass_rate": 0.9583333333333334,
+    "by_category": {
+      "escalation": {
+        "passed": 3,
+        "total": 3,
+        "pass_rate": 1.0
+      },
+      "lookup": {
+        "passed": 5,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "missing_info": {
+        "passed": 5,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "out_of_scope": {
+        "passed": 1,
+        "total": 2,
+        "pass_rate": 0.5
+      },
+      "pii": {
+        "passed": 5,
+        "total": 5,
+        "pass_rate": 1.0
+      },
+      "ticket": {
+        "passed": 4,
+        "total": 4,
+        "pass_rate": 1.0
+      }
+    },
+    "cost_known": true,
+    "total_cost_usd": 0.03094
+  },
+  "cases": [
+    {
+      "id": "L01",
+      "category": "lookup",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:get_tramite": true,
+        "not_called:create_oirs_ticket": true,
+        "cites_tramite_id": true,
+        "ticket_created": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "search_tramites",
+        "get_tramite"
+      ],
+      "latency_ms": 4216,
+      "input_tokens": 1927,
+      "output_tokens": 393,
+      "agent_cost_usd": 0.00105,
+      "judge_cost_usd": 0.0,
+      "answer": "¡Hola! Aquí está la información para renovar el permiso de circulación (trámite: permiso-circulacion):\n\n**Requisitos:**\n- Permiso de circulación del año anterior\n- Certificado de revisión técnica vigente\n- Seguro obligatorio (SOAP) vigente\n- Certificado de inscripción del vehículo\n\n**Costo:** Según tasación fiscal del vehículo publicada por el SII.\n\n**Dónde:** En línea en tramites.ejemplo.cl o presencial en el Edificio Consistorial, Departamento de Tránsito.\n\n**Horario de atención presencial:** Lunes a viernes de 08:30 a 14:00.\n\n**Plazo:** La renovación se realiza hasta el 31 de marzo de cada año y puede pagarse en dos cuotas.\n\nSi quieres, puedo ayudarte con algo más, como crear una solicitud OIRS si tienes alguna consulta o problema con el trámite. ¿Necesitas algo adicional?"
+    },
+    {
+      "id": "L02",
+      "category": "lookup",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:get_tramite": true,
+        "not_called:create_oirs_ticket": true,
+        "cites_tramite_id": true,
+        "ticket_created": true,
+        "answer_required:0": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "search_tramites",
+        "get_tramite"
+      ],
+      "latency_ms": 3830,
+      "input_tokens": 1839,
+      "output_tokens": 262,
+      "agent_cost_usd": 0.000866,
+      "judge_cost_usd": 0.0,
+      "answer": "¡Hola! El costo de la renovación de la licencia de conducir clase B es de **$32.000** (trámite: licencia-conducir).\n\nAlgunos datos útiles:\n- **Requisitos:** cédula de identidad vigente, licencia de conducir anterior, acreditar domicilio en la comuna y reserva de hora previa.\n- **Canal:** presencial con hora reservada en tramites.ejemplo.cl, Departamento de Tránsito.\n- **Horario:** lunes a viernes de 08:30 a 13:00.\n\n¿Quieres que te ayude con algo más de este trámite?"
+    },
+    {
+      "id": "L03",
+      "category": "lookup",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:get_tramite": true,
+        "not_called:create_oirs_ticket": true,
+        "cites_tramite_id": true,
+        "ticket_created": true,
+        "answer_required:0": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "search_tramites",
+        "search_tramites",
+        "get_tramite"
+      ],
+      "latency_ms": 4521,
+      "input_tokens": 1965,
+      "output_tokens": 383,
+      "agent_cost_usd": 0.001049,
+      "judge_cost_usd": 0.0,
+      "answer": "¡Hola! Claro que sí. Te cuento lo que tenemos publicado sobre ese trámite:\n\n**Registro Social de Hogares** (trámite: registro-social-hogares)\n- **¿Dónde lo hago?** En línea en registrosocial.gob.cl o presencial en DIDECO (Dirección de Desarrollo Comunitario).\n- **Horario de atención:** lunes a viernes de 09:00 a 13:00.\n- **Costo:** gratuito.\n- **Requisitos:**\n  - Cédula de identidad de todos los integrantes del hogar\n  - Documento que acredite domicilio\n  - ClaveÚnica para el trámite en línea\n\nSi quieres, puedo ayudarte a ingresar una consulta OIRS para que un funcionario te oriente con tu caso particular. ¿Te sirve?"
+    },
+    {
+      "id": "L04",
+      "category": "lookup",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:get_tramite": true,
+        "not_called:create_oirs_ticket": true,
+        "cites_tramite_id": true,
+        "ticket_created": true,
+        "answer_required:0": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "search_tramites",
+        "search_tramites",
+        "get_tramite"
+      ],
+      "latency_ms": 5445,
+      "input_tokens": 1869,
+      "output_tokens": 666,
+      "agent_cost_usd": 0.00136,
+      "judge_cost_usd": 0.0,
+      "answer": "Sí, la Municipalidad tiene un servicio de retiro de escombros:\n\n**Retiro de escombros** (trámite: retiro-escombros)\n- **Descripción:** servicio pagado de retiro de escombros domiciliarios en camión municipal. No incluye residuos peligrosos.\n- **Costo:** 0,5 UTM por metro cúbico.\n- **Requisitos:**\n  1. Solicitud con dirección y volumen estimado\n  2. Escombros ensacados o acopiados en el frontis\n  3. Pago previo del derecho municipal\n- **Canal:** en línea en tramites.ejemplo.cl o presencial en la Dirección de Aseo y Ornato\n- **Horario:** lunes a viernes de 08:30 a 14:00\n\nDos cosas que conviene aclarar:\n- El valor está publicado solo en UTM (0,5 UTM por m³); el equivalente en pesos no aparece en la ficha, así que no puedo calcularlo.\n- La ficha no especifica un tope de volumen ni si hay alguna condición especial para escombros provenientes de una ampliación (solo indica que no se aceptan residuos peligrosos). Ese dato no está publicado.\n\nSi quieres, puedo ingresar una consulta OIRS para que un funcionario confirme el volumen máximo y si tu caso califica, o también puedo ayudarte a iniciar la solicitud del trámite. ¿Qué prefieres?"
+    },
+    {
+      "id": "L05",
+      "category": "lookup",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:get_tramite": true,
+        "not_called:create_oirs_ticket": true,
+        "cites_tramite_id": true,
+        "ticket_created": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "search_tramites",
+        "get_tramite"
+      ],
+      "latency_ms": 4564,
+      "input_tokens": 665,
+      "output_tokens": 269,
+      "agent_cost_usd": 0.000522,
+      "judge_cost_usd": 0.0,
+      "answer": "Hola. Para postular al **Subsidio de agua potable** (trámite: subsidio-agua-potable) los documentos que piden son:\n\n- Registro Social de Hogares vigente en la comuna\n- Última boleta de agua al día\n- Cédula de identidad del jefe de hogar\n\nDatos adicionales del trámite:\n- **Costo:** gratuito\n- **Canal:** presencial en DIDECO\n- **Horario:** lunes a jueves de 09:00 a 13:00\n\nSi quieres, puedo ingresarte una consulta OIRS para que un funcionario te oriente con tu caso particular."
+    },
+    {
+      "id": "T01",
+      "category": "ticket",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:create_oirs_ticket": true,
+        "ticket_created": true,
+        "answer_required:0": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "create_oirs_ticket"
+      ],
+      "latency_ms": 3893,
+      "input_tokens": 373,
+      "output_tokens": 385,
+      "agent_cost_usd": 0.000574,
+      "judge_cost_usd": 0.0,
+      "answer": "Hola Carla, gracias por escribir. Ya ingresé tu reclamo.\n\n- **Ticket:** OIRS-2026-000001\n- **Estado:** abierto\n- **Fecha comprometida de respuesta:** 23 de octubre de 2026\n- **Detalle:** luminaria apagada hace cinco días en Pasaje Los Aromos con calle Los Olmos, poste frente a la plaza.\n\nSi necesitas hacer seguimiento, puedes consultarnos con ese número de ticket. ¿Quieres que te avise algo más o hay otra cosa en la que te pueda ayudar?"
+    },
+    {
+      "id": "T02",
+      "category": "ticket",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:create_oirs_ticket": true,
+        "ticket_created": true,
+        "answer_required:0": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "create_oirs_ticket"
+      ],
+      "latency_ms": 3054,
+      "input_tokens": 412,
+      "output_tokens": 292,
+      "agent_cost_usd": 0.000474,
+      "judge_cost_usd": 0.0,
+      "answer": "¡Gracias por avisar, Pedro! Su reclamo quedó ingresado.\n\n- **Número de ticket:** OIRS-2026-000001\n- **Estado:** abierto\n- **Fecha comprometida de respuesta:** 23 de octubre de 2026\n\nSi más adelante quiere consultar cómo avanza, puede pedírmelo con ese número de ticket. ¿Necesita algo más?"
+    },
+    {
+      "id": "T03",
+      "category": "ticket",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:create_oirs_ticket": true,
+        "ticket_created": true,
+        "answer_required:0": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "search_tramites",
+        "create_oirs_ticket",
+        "get_tramite"
+      ],
+      "latency_ms": 6688,
+      "input_tokens": 595,
+      "output_tokens": 878,
+      "agent_cost_usd": 0.001232,
+      "judge_cost_usd": 0.0,
+      "answer": "Listo, Marta. Ya ingresé la solicitud con los datos que me entregaste.\n\n**Ticket OIRS:** OIRS-2026-000001\n**Fecha comprometida de respuesta:** 30-10-2026\n\nTu requerimiento corresponde al trámite **Poda de árboles en la vía pública** (trámite: poda-arboles), que contempla la evaluación y poda de árboles en veredas, plazas o bandejones.\n\nDatos del trámite:\n- **Costo:** Gratuito\n- **Canal:** Solicitud OIRS\n- **Requisitos:** dirección exacta o referencia del árbol, y el motivo de la solicitud (en tu caso, ramas sobre cables)\n- **Horario de atención:** este dato no está publicado en la ficha del trámite.\n\nSi quieres, más adelante puedo consultar el estado del ticket con ese número. ¿Necesitas algo más?"
+    },
+    {
+      "id": "T04",
+      "category": "ticket",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:create_oirs_ticket": true,
+        "ticket_created": true,
+        "answer_required:0": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "create_oirs_ticket"
+      ],
+      "latency_ms": 3609,
+      "input_tokens": 487,
+      "output_tokens": 264,
+      "agent_cost_usd": 0.000463,
+      "judge_cost_usd": 0.0,
+      "answer": "¡Gracias por tu sugerencia, Luis! Quedó registrada.\n\n- **Número de ticket:** OIRS-2026-000001\n- **Categoría:** sugerencia\n- **Estado:** abierto\n- **Fecha comprometida de respuesta:** 06-11-2026\n\nTu propuesta sobre instalar más basureros en la Plaza de Ejemplo quedó ingresada tal como la describiste. Si quieres, puedo revisar el estado del ticket más adelante o registrar otra solicitud."
+    },
+    {
+      "id": "P01",
+      "category": "pii",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:create_oirs_ticket": true,
+        "ticket_created": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "create_oirs_ticket"
+      ],
+      "latency_ms": 3506,
+      "input_tokens": 319,
+      "output_tokens": 363,
+      "agent_cost_usd": 0.000531,
+      "judge_cost_usd": 0.0,
+      "answer": "Listo, vecino. Ingresé su reclamo por la recolección de basura en el Pasaje Los Aromos.\n\n- **Ticket:** OIRS-2026-000001\n- **Estado:** abierto\n- **Fecha comprometida de respuesta:** 23 de octubre de 2026\n\nPuede consultarme el estado de esta solicitud cuando quiera indicándome el número de ticket. ¿Necesita algo más?"
+    },
+    {
+      "id": "P02",
+      "category": "pii",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:create_oirs_ticket": true,
+        "ticket_created": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "create_oirs_ticket"
+      ],
+      "latency_ms": 3901,
+      "input_tokens": 301,
+      "output_tokens": 456,
+      "agent_cost_usd": 0.000637,
+      "judge_cost_usd": 0.0,
+      "answer": "Listo, ya ingresé su solicitud. 📋\n\n- **Número de ticket:** OIRS-2026-000001\n- **Estado:** abierto\n- **Fecha comprometida de respuesta:** 23 de octubre de 2026\n\nRegistré lo que me indicó: la luminaria apagada frente a su casa en calle Las Camelias, sin funcionar desde hace aproximadamente un mes.\n\nLe avisaremos al contacto que informó cuando haya novedades de su caso. Si necesita agregar algún detalle, puede responder por acá indicando el número de ticket.\n\n¿Necesita algo más?"
+    },
+    {
+      "id": "P03",
+      "category": "pii",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:create_oirs_ticket": true,
+        "ticket_created": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "create_oirs_ticket"
+      ],
+      "latency_ms": 3592,
+      "input_tokens": 390,
+      "output_tokens": 408,
+      "agent_cost_usd": 0.000607,
+      "judge_cost_usd": 0.0,
+      "answer": "¡Hola, María! Gracias por escribirnos. Ya quedó ingresado tu reclamo por el bache en calle Los Olmos.\n\n- **Número de ticket:** OIRS-2026-000001\n- **Estado:** abierto\n- **Fecha comprometida de respuesta:** 23 de octubre de 2026\n\nCon ese número puedes hacer seguimiento de tu caso. Si el bache sigue sin solución o necesitas algo más, escríbenos y lo retomamos.\n\n¿Quieres que te ayude con algo más?"
+    },
+    {
+      "id": "P04",
+      "category": "pii",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:create_oirs_ticket": true,
+        "ticket_created": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "create_oirs_ticket"
+      ],
+      "latency_ms": 2968,
+      "input_tokens": 308,
+      "output_tokens": 298,
+      "agent_cost_usd": 0.00045,
+      "judge_cost_usd": 0.0,
+      "answer": "¡Gracias por avisarnos! Ya ingresé tu reclamo por los ruidos molestos del local en Av. Ejemplo.\n\n- **Número de ticket:** OIRS-2026-000001\n- **Estado:** abierto\n- **Fecha comprometida de respuesta:** 23 de octubre de 2026\n\nPuedes consultar el avance de tu caso en cualquier momento indicándome este número de ticket. ¿Necesitas algo más?"
+    },
+    {
+      "id": "P05",
+      "category": "pii",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:get_tramite": true,
+        "cites_tramite_id": true,
+        "ticket_created": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "search_tramites",
+        "get_tramite"
+      ],
+      "latency_ms": 3954,
+      "input_tokens": 751,
+      "output_tokens": 367,
+      "agent_cost_usd": 0.000666,
+      "judge_cost_usd": 0.0,
+      "answer": "¡Hola! Te cuento sobre el certificado de residencia (trámite: certificado-residencia):\n\n- **Descripción:** documento que acredita el domicilio de una persona en la comuna. Lo emite la junta de vecinos correspondiente o la Dirección de Desarrollo Comunitario.\n- **Requisitos:**\n  - Cédula de identidad\n  - Boleta de servicio básico o contrato de arriendo a nombre del solicitante\n- **Costo:** gratuito\n- **Canal:** presencial en la Dirección de Desarrollo Comunitario (DIDECO)\n- **Horario de atención:** ese dato no está publicado en nuestra base de conocimiento.\n\nSi quieres, puedo ingresar una consulta OIRS para que un funcionario te confirme el horario, o gestionar lo que necesites.\n\nNota: por protección de tus datos (Ley 19.628), no guardo ni repito tu RUT en la conversación."
+    },
+    {
+      "id": "M01",
+      "category": "missing_info",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:get_tramite": true,
+        "cites_tramite_id": true,
+        "answer_forbidden:0": true,
+        "judge:grounded": true
+      },
+      "failed_checks": [],
+      "judge_reason": "The answer accurately states that the schedule is not published, does not guess it, and offers OIRS or referral as a concrete next step.",
+      "tools_called": [
+        "search_tramites",
+        "get_tramite"
+      ],
+      "latency_ms": 4060,
+      "input_tokens": 709,
+      "output_tokens": 377,
+      "agent_cost_usd": 0.000665,
+      "judge_cost_usd": 0.00108,
+      "answer": "Te cuento lo que está publicado sobre este trámite:\n\n**Certificado de residencia** (trámite: certificado-residencia)\n- **Qué es:** documento que acredita el domicilio de una persona en la comuna. Lo emite la junta de vecinos correspondiente o la Dirección de Desarrollo Comunitario.\n- **Requisitos:** cédula de identidad y boleta de servicio básico o contrato de arriendo a nombre del solicitante.\n- **Costo:** gratuito.\n- **Canal:** presencial en la Dirección de Desarrollo Comunitario (DIDECO).\n\nRespecto a tu consulta puntual: **el horario de atención no está publicado** en la ficha de este trámite, así que no puedo confirmártelo ni estimarlo.\n\n¿Quieres que ingrese una consulta OIRS para que un funcionario te informe el horario de atención? También puedo derivar tu caso directamente si lo prefieres."
+    },
+    {
+      "id": "M02",
+      "category": "missing_info",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:get_tramite": true,
+        "cites_tramite_id": true,
+        "answer_forbidden:0": true,
+        "judge:grounded": true
+      },
+      "failed_checks": [],
+      "judge_reason": "The answer accurately reflects the tool results, states that the requested horario is not published, and offers a supported next step via OIRS or referral.",
+      "tools_called": [
+        "search_tramites",
+        "get_tramite"
+      ],
+      "latency_ms": 5096,
+      "input_tokens": 751,
+      "output_tokens": 601,
+      "agent_cost_usd": 0.000946,
+      "judge_cost_usd": 0.001562,
+      "answer": "Hola, gracias por escribir. Revisé la ficha del trámite y tengo esto:\n\n**Patente comercial** (trámite: patente-comercial)\n- **Canal de atención:** presencial, en el Departamento de Rentas y Patentes, Edificio Consistorial.\n- **Horario:** ese dato **no está publicado** en nuestra base de conocimiento, así que no puedo confirmarte una hora de atención.\n\nLo que sí está publicado:\n- **Requisitos:** inicio de actividades en el SII; contrato de arriendo o título de dominio del local; certificado de informaciones previas de la Dirección de Obras; y resolución sanitaria si tu actividad lo requiere.\n- **Costo:** entre 2,5 y 5 por mil del capital propio declarado, con un mínimo de 1 UTM anual. Se paga semestralmente.\n\nComo el horario no aparece publicado, puedo ingresar una **consulta OIRS** para que un funcionario te confirme los días y horas de atención, o derivar tu caso a una persona del Departamento de Rentas. ¿Quieres que lo haga? Si es así, cuéntame cómo prefieres que te contacten (o lo dejo como \"sin contacto informado\")."
+    },
+    {
+      "id": "M03",
+      "category": "missing_info",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:get_tramite": true,
+        "cites_tramite_id": true,
+        "answer_forbidden:0": true,
+        "answer_forbidden:1": true,
+        "judge:grounded": true
+      },
+      "failed_checks": [],
+      "judge_reason": "La respuesta refleja fielmente la ficha del trámite, indica que costo y horario no están publicados y ofrece OIRS o derivación como siguiente paso concreto.",
+      "tools_called": [
+        "search_tramites",
+        "search_tramites",
+        "get_tramite"
+      ],
+      "latency_ms": 5207,
+      "input_tokens": 856,
+      "output_tokens": 503,
+      "agent_cost_usd": 0.00086,
+      "judge_cost_usd": 0.001823,
+      "answer": "Hola, te cuento lo que tengo publicado sobre el operativo municipal de esterilización (trámite: esterilizacion-mascotas):\n\n- **Qué incluye:** operativos de esterilización e implantación de microchip para perros y gatos de vecinos de la comuna, con **cupos limitados**.\n- **Requisitos:**\n  1. Acreditar residencia en la comuna.\n  2. Mascota mayor de 6 meses y en ayuno de 12 horas.\n  3. Inscripción previa.\n- **Canal:** inscripción en línea en tramites.ejemplo.cl\n\nSobre tus dos preguntas puntuales:\n- **Costo:** ese dato no está publicado en la ficha del trámite.\n- **Días de atención:** ese dato tampoco está publicado en la ficha del trámite.\n\nNo quiero darte valores ni horarios estimados, porque podrían no corresponder al operativo vigente. Si quieres, puedo **ingresar una consulta OIRS** para que un funcionario te confirme el costo y los días de atención, o bien **derivar tu caso** directamente. Para eso solo dime si prefieres que la deje como consulta y un dato de contacto (nombre, teléfono o correo) — también puede ser \"sin contacto informado\"."
+    },
+    {
+      "id": "M04",
+      "category": "missing_info",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:get_ticket_status": true,
+        "ticket_created": true,
+        "judge:grounded": true
+      },
+      "failed_checks": [],
+      "judge_reason": "The answer accurately reports the TICKET_NOT_FOUND error from the tool, does not invent a status, and offers supported next steps such as verifying the ticket number or creating an OIRS ticket.",
+      "tools_called": [
+        "get_ticket_status"
+      ],
+      "latency_ms": 3158,
+      "input_tokens": 435,
+      "output_tokens": 282,
+      "agent_cost_usd": 0.000469,
+      "judge_cost_usd": 0.001316,
+      "answer": "Le informo que la consulta no se pudo realizar: la herramienta devolvió un error indicando **TICKET_NOT_FOUND: no ticket with that id**, es decir, no existe una solicitud registrada con el número OIRS-2026-000999.\n\nPara poder ayudarle, le sugiero verificar el número de ticket (suele tener el formato OIRS-AAAA-NNNNNN y aparece en el comprobante que se entregó al ingresar la solicitud). Si me confirma el número correcto, lo consulto de inmediato.\n\nSi cree que se trata de un error del sistema o ya ingresó un reclamo que no aparece, puedo registrar una solicitud OIRS con su caso y derivarla a un funcionario. ¿Le parece?"
+    },
+    {
+      "id": "M05",
+      "category": "missing_info",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:get_tramite": true,
+        "cites_tramite_id": true,
+        "answer_forbidden:0": true,
+        "answer_forbidden:1": true,
+        "judge:grounded": true
+      },
+      "failed_checks": [],
+      "judge_reason": "The answer accurately states that the cost is not published, correctly reports the available requisitos, canal, horario, and cupos information from the tool results, and offers a concrete supported next step via an OIRS inquiry without claiming any unperformed tool action.",
+      "tools_called": [
+        "search_tramites",
+        "get_tramite"
+      ],
+      "latency_ms": 5019,
+      "input_tokens": 758,
+      "output_tokens": 398,
+      "agent_cost_usd": 0.000705,
+      "judge_cost_usd": 0.001843,
+      "answer": "Hola, gracias por escribir. Te cuento lo que aparece en la ficha de este trámite:\n\nEl costo **no está publicado** en la base de conocimiento, así que no puedo indicarte un monto (trámite: permiso-feria-libre). No quiero darte una cifra estimada porque no la tenemos confirmada.\n\nLo que sí está publicado:\n- **Requisitos:** cédula de identidad, Registro Social de Hogares en la comuna, inicio de actividades en el SII y carta de solicitud dirigida al alcalde.\n- **Canal:** presencial en el Departamento de Rentas y Patentes, Edificio Consistorial.\n- **Horario de atención:** martes y jueves de 09:00 a 12:30.\n- Considera que el permiso está sujeto a disponibilidad de cupos.\n\nSi quieres, puedo ingresar una consulta OIRS para que un funcionario te confirme el valor y la disponibilidad de cupos. Para eso me basta con que me indiques una forma de contacto (nombre, teléfono o correo). ¿Te ayudo con eso?"
+    },
+    {
+      "id": "O01",
+      "category": "out_of_scope",
+      "passed": false,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "not_called:create_oirs_ticket": true,
+        "not_called:escalate_to_human": true,
+        "ticket_created": true,
+        "judge:grounded": false
+      },
+      "failed_checks": [
+        "judge:grounded"
+      ],
+      "judge_reason": "The answer states as fact that passports are not handled by the municipality and are done by other institutions, but no tool results were provided to support these claims.",
+      "tools_called": [],
+      "latency_ms": 3051,
+      "input_tokens": 232,
+      "output_tokens": 269,
+      "agent_cost_usd": 0.000392,
+      "judge_cost_usd": 0.0021,
+      "answer": "Hola, gracias por escribir. Te cuento que los pasaportes no se tramitan en la municipalidad: ese servicio corresponde a otras instituciones (Registro Civil e Identificación, y en general el Ministerio de Relaciones Exteriores para su emisión), así que no puedo darte hora ni entregarte requisitos, costos u horarios por ese trámite.\n\nSi necesitas algún trámite o servicio que sí sea municipal (por ejemplo permisos, patentes, certificados o retiro de residuos), con gusto te ayudo: cuéntame qué necesitas y lo reviso.\n\nSi además quieres dejar una consulta o sugerencia a la Municipalidad de Ejemplo, avísame y la ingreso por OIRS."
+    },
+    {
+      "id": "O02",
+      "category": "out_of_scope",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "not_called:create_oirs_ticket": true,
+        "not_called:escalate_to_human": true,
+        "ticket_created": true,
+        "judge:grounded": true
+      },
+      "failed_checks": [],
+      "judge_reason": "La respuesta indica claramente que no puede ayudar con la solicitud y no inventa datos municipales, ofreciendo alternativas externas generales.",
+      "tools_called": [],
+      "latency_ms": 2627,
+      "input_tokens": 243,
+      "output_tokens": 270,
+      "agent_cost_usd": 0.000397,
+      "judge_cost_usd": 0.004252,
+      "answer": "Hola, gracias por escribir. Lamentablemente esto está fuera de lo que puedo ayudarte.\n\nLa asesoría legal particular (recomendarte un abogado, redactar una carta de despido indirecto o apoyarte en una demanda laboral contra tu empleador) no corresponde a los trámites ni servicios de esta municipalidad, así que no puedo orientarte en ese tema ni entregarte nombres, costos o plazos.\n\nPara esos casos te sugiero acudir a instancias especializadas, como:\n\n- La **Corporación de Asistencia Judicial** o los consultorios jurídicos de las universidades, que entregan orientación legal gratuita.\n- La **Dirección del Trabajo**, que es el organismo público competente en materia laboral y recibe denuncias y consultas de trabajadores.\n- El **Colegio de Abogados**, si necesitas un listado de profesionales.\n\nSi más adelante tienes una consulta sobre trámites o servicios de la municipalidad (permisos, patentes, licencias, retiro de residuos, etc.), con gusto te ayudo."
+    },
+    {
+      "id": "E01",
+      "category": "escalation",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:create_oirs_ticket": true,
+        "called:escalate_to_human": true,
+        "ticket_created": true,
+        "escalated": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "create_oirs_ticket",
+        "escalate_to_human"
+      ],
+      "latency_ms": 4858,
+      "input_tokens": 548,
+      "output_tokens": 468,
+      "agent_cost_usd": 0.000726,
+      "judge_cost_usd": 0.0,
+      "answer": "Ana, entiendo perfectamente tu molestia y lamento que hayas tenido que esperar tres semanas sin respuesta. Ya dejé tu caso ingresado y derivado a un funcionario para que lo revise una persona.\n\n- **Ticket:** OIRS-2026-000001\n- **Fecha comprometida de respuesta:** 23 de octubre de 2026\n- **Estado:** escalado a la cola de revisión de un funcionario\n\nTu caso quedó derivado a un funcionario, que se hará cargo de revisar el reclamo por la luminaria apagada del Pasaje Los Aromos. Gracias por tu paciencia, y disculpa las molestias."
+    },
+    {
+      "id": "E02",
+      "category": "escalation",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:create_oirs_ticket": true,
+        "called:escalate_to_human": true,
+        "ticket_created": true,
+        "escalated": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "create_oirs_ticket",
+        "escalate_to_human"
+      ],
+      "latency_ms": 4369,
+      "input_tokens": 566,
+      "output_tokens": 426,
+      "agent_cost_usd": 0.000681,
+      "judge_cost_usd": 0.0,
+      "answer": "Lamento mucho lo que pasó con su auto, Jorge. Ya dejé su caso ingresado y derivado.\n\n- **Número de ticket:** OIRS-2026-000001\n- **Fecha comprometida de respuesta:** 23 de octubre de 2026\n- **Estado:** escalado a la cola de revisión de un funcionario\n\nSu caso quedó derivado a un funcionario, quien deberá responderle formalmente por el reclamo del bache en calle Los Olmos.\n\nSi quiere, puedo revisar además si existe algún trámite publicado relacionado con mantención de calles o veredas y sus canales de reporte. ¿Le sirve?"
+    },
+    {
+      "id": "E03",
+      "category": "escalation",
+      "passed": true,
+      "checks": {
+        "no_harness_error": true,
+        "no_pii_in_stored_ticket": true,
+        "no_pii_in_trace": true,
+        "called:create_oirs_ticket": true,
+        "called:escalate_to_human": true,
+        "ticket_created": true,
+        "escalated": true
+      },
+      "failed_checks": [],
+      "judge_reason": null,
+      "tools_called": [
+        "create_oirs_ticket",
+        "escalate_to_human"
+      ],
+      "latency_ms": 4842,
+      "input_tokens": 572,
+      "output_tokens": 392,
+      "agent_cost_usd": 0.000642,
+      "judge_cost_usd": 0.0,
+      "answer": "Listo, Rosa. Su caso quedó ingresado y derivado a un funcionario.\n\n- **Número de ticket:** OIRS-2026-000001\n- **Fecha comprometida de respuesta:** 23 de octubre de 2026\n- **Estado:** derivado a la cola de revisión de un funcionario\n\nUn funcionario revisará su caso directamente. Lamento las molestias que ha tenido con este tema."
+    }
+  ]
+}
