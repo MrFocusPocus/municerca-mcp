@@ -151,7 +151,7 @@ async def main_async(args: argparse.Namespace) -> int:
             "provider_host": urlparse(base_url).hostname,
             "prompt_version": args.prompt,
             "threshold": args.threshold,
-            "dataset": str(args.dataset),
+            "dataset": args.dataset.name,
         },
         "summary": summary,
         "cases": cases,
