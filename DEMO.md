@@ -19,6 +19,44 @@ environment variables only.
 | 8 to 9 | `.claude/settings.json`, `echo '{"m":"12.345.678-5"}' > traces/x.jsonl && make pii; rm traces/x.jsonl` | An agent cannot weaken the checks, and a RUT in a trace blocks the commit. |
 | 9 to 10 | `.github/workflows/evals.yml`, `REVIEW.md`, `docs/RUNBOOK.md` | Evals gate PRs, review has three passes, every incident becomes an eval case. |
 
+## Showing the hosted server live (2 minutes, after the stdio run)
+
+The same server runs on Cloud Run and is reachable at `https://municerca.cl/mcp`.
+
+1. Public but closed. Expect `{"status":"ok"}` and then `{"error":"UNAUTHORIZED"}`:
+
+   ```
+   curl -s https://municerca-mcp-970159477648.southamerica-west1.run.app/health
+   curl -s -X POST https://municerca.cl/mcp -d '{}'
+   ```
+
+   Say: health is the only public path. Everything else needs the bearer token, and the server
+   refuses to start over HTTP without one (`tests/test_http.py`).
+
+2. Load the token from the service without printing it:
+
+   ```
+   export MUNICERCA_AUTH_TOKEN=$(gcloud run services describe municerca-mcp \
+     --project municerca-cl --region southamerica-west1 \
+     --format='value(spec.template.spec.containers[0].env[0].value)')
+   ```
+
+   Say: the token lives in the service's environment, never in the repo.
+
+3. A real MCP client call through the public domain:
+
+   ```
+   uv run python scripts/smoke_http.py https://municerca.cl/mcp
+   ```
+
+   It prints the five tool names and the `poda-arboles` record with `"horario": null`.
+   Say: same five tools as over stdio, and null means "not published", which is what the
+   grounding evals test.
+
+Limits to state: this shows the tools answering, not an agent conversation. The harness and the
+evals run over stdio only. Storage on the hosted instance is temporary. Run step 1 a minute
+before presenting so the cold start is out of the way.
+
 ## What the eval caught
 
 - v0: 5 of 24 (21%), USD 0.0406. v1: 23 of 24 (96%), USD 0.0309. Threshold 90%.
