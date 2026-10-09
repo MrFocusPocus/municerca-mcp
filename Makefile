@@ -1,6 +1,6 @@
-.PHONY: check lint type test evals report
+.PHONY: check lint type test pii hooks evals report
 
-check: lint type test
+check: lint type test pii
 
 lint:
 	uv run ruff check .
@@ -12,8 +12,14 @@ type:
 test:
 	uv run pytest -q
 
+pii:
+	uv run python scripts/check_pii.py
+
+hooks:
+	git config core.hooksPath .githooks
+
 evals:
-	uv run python -m evals.run
+	uv run python -m evals.run --label local --out evals/results/local.json
 
 report:
 	uv run python scripts/report.py
