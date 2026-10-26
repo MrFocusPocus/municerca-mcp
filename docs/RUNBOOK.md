@@ -58,5 +58,6 @@ an invented horario, PII in a ticket or trace, a missed escalation, a wrong tick
   counts as failed in v0 for a measurement reason, not a behavior reason.
 - The Claude hooks guard the Edit and Write tools. A shell command can still write to `tests/`.
   CI and review (REVIEW.md, pass 3) are the backstop.
-- The `ci` workflow runs on GitHub and is green. The `evals` workflow has not run yet: it
-  needs an `ANTHROPIC_API_KEY` repository secret.
+- The `evals` workflow runs on DeepSeek (`deepseek-flash` agent, `deepseek-v4-pro` judge) and
+  needs the repository secret `DEEPSEEK_API_KEY`. Switch provider or models with repository
+  variables `ANTHROPIC_BASE_URL`, `MUNICERCA_AGENT_MODEL` and `MUNICERCA_JUDGE_MODEL`.
